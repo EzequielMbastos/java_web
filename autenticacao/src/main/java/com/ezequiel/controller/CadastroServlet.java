@@ -10,8 +10,8 @@ import java.io.IOException;
 import com.ezequiel.data.BancoUsuarios;
 import com.ezequiel.model.Usuario;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/cadastro")
+public class CadastroServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -21,22 +21,27 @@ public class LoginServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         // Seu código vem aqui
+        String nomeDigitado = request.getParameter("nome");
         String usuarioDigitado = request.getParameter("usuario");
         String senhaDigitada = request.getParameter("senha");
-        Usuario usuarioLogado = null;
+
+        boolean existe = false;
 
         for (Usuario u : BancoUsuarios.lista) {
-            if (u.getUsuario().equals(usuarioDigitado) && u.getSenha().equals(senhaDigitada))
-                usuarioLogado = u;
-            break;
+            if (u.getUsuario().equals(usuarioDigitado)) {
+                existe = true;
+                ;
+                break;
+            }
         }
 
-        if (usuarioLogado != null) {
-            // login autorizado
-            request.getRequestDispatcher("bemvindo.jsp").forward(request, response);
+        if (existe) {
+            request.setAttribute("mensagemErro", "Esse usuario ja existe");
+            request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         } else {
-            request.setAttribute("mensagemErro", "Usuario ou senha invalidos!");
+            BancoUsuarios.lista.add(new Usuario(nomeDigitado, usuarioDigitado, senhaDigitada));
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+
     }
 }

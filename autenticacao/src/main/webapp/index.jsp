@@ -8,10 +8,20 @@ isELIgnored="false" %>
   </head>
   <body>
     <h2>Faça login</h2>
-    <form action="login">
-      <input name="usuario" placeholder="informe o usuario" />
-      <input name="senha" placeholder="informe a senha" type="password" />
-      <button type="submit">Entrar</button>
+    <form action="login" method="post">
+      <input name="usuario" placeholder="informe o usuario" /> <br> <br>
+      <input name="senha" placeholder="informe a senha" type="password" /> <br> <br>
+      <button type="submit">Entrar</button> <br> <br>
+      <a href="cadastro.jsp">
+        <button type="button">Faça seu cadastro</button>
+      </a>
+
+      <br>
+
+      <p style="color: red;">${mensagemErro}</p>
+
     </form>
+
+    
   </body>
 </html>

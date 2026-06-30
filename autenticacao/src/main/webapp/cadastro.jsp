@@ -7,19 +7,20 @@ isELIgnored="false" %>
     <title>Projeto Autenticação</title>
   </head>
   <body>
-    <h2>Faça login</h2>
-    <form action="login" method="post">
+    <h2>Faça o cadastro</h2>
+    <form action="cadastro" method="post">
+
+      <input name="nome" placeholder="Informe seu nome"> <br> <br>
       <input name="usuario" placeholder="informe o usuario" /> <br> <br>
       <input name="senha" placeholder="informe a senha" type="password" /> <br> <br>
-      <button type="submit">Entrar</button> <br> <br>
-      <a href="cadastro.jsp">
-        <button type="button">Faça seu cadastro</button>
-      </a>
+      <button type="submit">Cadastrar</button> <br> <br>
+      <p style="color: red;">${mensagemErro}</p>
+      <a href="index.jsp">Faça login</a>
+
 
       <br>
 
-      <p style="color: red;">${mensagemErro}</p>
-
+      
     </form>
 
     

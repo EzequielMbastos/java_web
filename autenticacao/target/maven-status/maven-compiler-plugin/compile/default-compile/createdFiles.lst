@@ -1,1 +1,4 @@
+com\ezequiel\controller\CadastroServlet.class
+com\ezequiel\model\Usuario.class
+com\ezequiel\data\BancoUsuarios.class
 com\ezequiel\controller\LoginServlet.class
